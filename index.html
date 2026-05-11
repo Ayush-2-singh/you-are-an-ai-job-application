@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI Job Application Agent</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="header">
+        <div>
+          <p class="eyebrow">Remote paid internships</p>
+          <h1>AI Job Application Agent</h1>
+          <p class="lede">
+            Rank web development and Java internship opportunities, generate recruiter messages,
+            and keep every application under your approval.
+          </p>
+        </div>
+        <div class="status-panel" aria-label="Agent status">
+          <span class="status-dot"></span>
+          <div>
+            <strong>Safe mode active</strong>
+            <span>No auto-submit, no spam, no platform bypassing.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="controls" aria-label="Search controls">
+          <h2>Preferences</h2>
+          <label>
+            Target roles
+            <textarea id="roles" rows="3">web developer intern, frontend developer intern, full stack developer intern, java developer intern</textarea>
+          </label>
+          <label>
+            Skills
+            <textarea id="skills" rows="4">HTML, CSS, JavaScript, Java, Python, C++, Git, GitHub, REST APIs, Vercel, Responsive Design</textarea>
+          </label>
+          <label>
+            Remote preference
+            <select id="remote">
+              <option value="remote">Remote only</option>
+              <option value="hybrid">Hybrid okay</option>
+              <option value="any">Any location</option>
+            </select>
+          </label>
+          <label>
+            Minimum score
+            <input id="minimumScore" type="number" min="0" max="100" value="65" />
+          </label>
+          <button id="rankButton" type="button">Rank opportunities</button>
+        </aside>
+
+        <section class="results" aria-live="polite">
+          <div class="results-header">
+            <div>
+              <h2>Top matches</h2>
+              <p id="summary">Loading opportunities...</p>
+            </div>
+            <span id="count" class="count">0</span>
+          </div>
+          <div id="jobList" class="job-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <template id="jobCardTemplate">
+      <article class="job-card">
+        <div class="job-topline">
+          <div>
+            <p class="platform"></p>
+            <h3></h3>
+            <p class="company"></p>
+          </div>
+          <div class="score" aria-label="Match score"></div>
+        </div>
+        <dl class="job-meta">
+          <div>
+            <dt>Salary</dt>
+            <dd class="salary"></dd>
+          </div>
+          <div>
+            <dt>Location</dt>
+            <dd class="location"></dd>
+          </div>
+          <div>
+            <dt>Skills</dt>
+            <dd class="skills"></dd>
+          </div>
+        </dl>
+        <p class="reason"></p>
+        <details>
+          <summary>Application material</summary>
+          <div class="generated">
+            <h4>Recruiter message</h4>
+            <p class="message"></p>
+            <h4>Why should we hire you?</h4>
+            <p class="why"></p>
+          </div>
+        </details>
+        <a class="apply" target="_blank" rel="noreferrer">Review listing</a>
+      </article>
+    </template>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
