@@ -1,39 +1,4 @@
-const defaultJobs = [
-  {
-    company: "SproutXP",
-    role: "Backend Developer Intern",
-    platform: "Indeed",
-    location: "Remote",
-    salary: "₹15,000 - ₹20,000/month",
-    description:
-      "Assist in backend services, REST APIs, databases, Git/GitHub. Skills: Java, Python, JavaScript, Node.js, Spring Boot, SQL, MongoDB, Postman.",
-    required_skills: ["Java", "REST APIs", "SQL", "Git", "Spring Boot", "Node.js"],
-    apply_link: "https://in.indeed.com/q-remote-java-developer-intern-jobs.html",
-  },
-  {
-    company: "Optimspace",
-    role: "Web Developer Intern",
-    platform: "Indeed",
-    location: "Remote",
-    salary: "₹7,500 - ₹15,000/month",
-    description:
-      "Build responsive websites using HTML, CSS, JavaScript. React, Angular, or Node.js preferred. Internship certificate and portfolio projects.",
-    required_skills: ["HTML", "CSS", "JavaScript", "React", "Node.js"],
-    apply_link: "https://in.indeed.com/q-web-dev-intern-l-remote-jobs.html",
-  },
-  {
-    company: "Keshav Kingdom",
-    role: "Java Backend Developer Intern",
-    platform: "LinkedIn",
-    location: "Remote",
-    salary: "₹5,000/month",
-    description:
-      "Remote paid internship for Java backend development. Work with Java, Spring Boot, RESTful APIs, databases, Git, OOP.",
-    required_skills: ["Java", "Spring Boot", "REST APIs", "Git", "OOP", "MySQL"],
-    apply_link:
-      "https://in.linkedin.com/jobs/view/back-end-developer-intern-at-keshav-kingdom-4329972282",
-  },
-];
+let availableJobs = [];
 
 const avoidTerms = ["unpaid", "senior", "lead", "manager", "registration fee", "training fee"];
 const preferredTerms = ["paid", "stipend", "remote", "fresher", "student", "intern"];
@@ -50,12 +15,33 @@ const fields = {
   template: document.querySelector("#jobCardTemplate"),
 };
 
-fields.rankButton.addEventListener("click", renderRankedJobs);
-renderRankedJobs();
+fields.rankButton.addEventListener("click", loadJobs);
+loadJobs();
 
-function renderRankedJobs() {
+async function loadJobs() {
+  fields.rankButton.disabled = true;
+  fields.rankButton.textContent = "Refreshing...";
+  fields.summary.textContent = "Fetching internship opportunities...";
+
+  try {
+    const result = await fetch(`/api/jobs?ts=${Date.now()}`);
+    if (!result.ok) throw new Error("Could not fetch jobs");
+    const payload = await result.json();
+    availableJobs = payload.jobs || [];
+    renderRankedJobs(payload.source);
+  } catch (error) {
+    fields.summary.textContent = "Could not refresh jobs. Try again in a moment.";
+    fields.jobList.replaceChildren();
+    fields.count.textContent = "0";
+  } finally {
+    fields.rankButton.disabled = false;
+    fields.rankButton.textContent = "Refresh and rank";
+  }
+}
+
+function renderRankedJobs(source = "current-results") {
   const profile = getProfile();
-  const ranked = defaultJobs
+  const ranked = availableJobs
     .map((job) => scoreJob(job, profile))
     .filter((item) => item.score >= profile.minimumScore)
     .sort((a, b) => b.score - a.score);
@@ -64,8 +50,8 @@ function renderRankedJobs() {
   fields.count.textContent = ranked.length;
   fields.summary.textContent =
     ranked.length === 1
-      ? "1 role is ready for review."
-      : `${ranked.length} roles are ready for review.`;
+      ? `1 role is ready for review from ${source}.`
+      : `${ranked.length} roles are ready for review from ${source}.`;
 
   ranked.forEach(({ job, score, reason }) => {
     const card = fields.template.content.cloneNode(true);

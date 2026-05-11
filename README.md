@@ -2,6 +2,16 @@
 
 A local career copilot for finding and ranking remote paid internships.
 
+## Live App
+
+Open the production dashboard here:
+
+[https://you-are-an-ai-job-application.vercel.app](https://you-are-an-ai-job-application.vercel.app)
+
+If you are viewing this from GitHub Pages, use the project path:
+
+[https://ayush-2-singh.github.io/you-are-an-ai-job-application/](https://ayush-2-singh.github.io/you-are-an-ai-job-application/)
+
 The first version is intentionally safe and practical:
 
 - Parses your `.docx` resume for skills and project keywords.
@@ -42,4 +52,3 @@ Internshala, Indeed, Instagram posts, or any other source.
 
 This agent can prepare application material, but it does not log into platforms,
 bypass anti-bot protections, or submit applications without explicit human approval.
-
