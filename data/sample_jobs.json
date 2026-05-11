@@ -1,0 +1,33 @@
+[
+  {
+    "company": "SproutXP",
+    "role": "Backend Developer Intern",
+    "platform": "Indeed",
+    "location": "Remote",
+    "salary": "₹15,000 - ₹20,000/month",
+    "description": "Assist in backend services, REST APIs, databases, Git/GitHub. Skills: Java, Python, JavaScript, Node.js, Spring Boot, SQL, MongoDB, Postman.",
+    "required_skills": ["Java", "REST APIs", "SQL", "Git", "Spring Boot", "Node.js"],
+    "apply_link": "https://in.indeed.com/q-remote-java-developer-intern-jobs.html"
+  },
+  {
+    "company": "Optimspace",
+    "role": "Web Developer Intern",
+    "platform": "Indeed",
+    "location": "Remote",
+    "salary": "₹7,500 - ₹15,000/month",
+    "description": "Build responsive websites using HTML, CSS, JavaScript. React, Angular, or Node.js preferred. Internship certificate and portfolio projects.",
+    "required_skills": ["HTML", "CSS", "JavaScript", "React", "Node.js"],
+    "apply_link": "https://in.indeed.com/q-web-dev-intern-l-remote-jobs.html"
+  },
+  {
+    "company": "Keshav Kingdom",
+    "role": "Java Backend Developer Intern",
+    "platform": "LinkedIn",
+    "location": "Remote",
+    "salary": "₹5,000/month",
+    "description": "Remote paid internship for Java backend development. Work with Java, Spring Boot, RESTful APIs, databases, Git, OOP.",
+    "required_skills": ["Java", "Spring Boot", "REST APIs", "Git", "OOP", "MySQL"],
+    "apply_link": "https://in.linkedin.com/jobs/view/back-end-developer-intern-at-keshav-kingdom-4329972282"
+  }
+]
+

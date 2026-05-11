@@ -1,0 +1,44 @@
+{
+  "target_roles": [
+    "web developer intern",
+    "frontend developer intern",
+    "full stack developer intern",
+    "java developer intern",
+    "backend developer intern"
+  ],
+  "preferred_locations": ["remote", "work from home", "india"],
+  "required_terms": ["intern"],
+  "preferred_terms": [
+    "paid",
+    "stipend",
+    "remote",
+    "fresher",
+    "student",
+    "html",
+    "css",
+    "javascript",
+    "java",
+    "react",
+    "node",
+    "spring boot",
+    "mysql",
+    "git"
+  ],
+  "avoid_terms": [
+    "unpaid",
+    "senior",
+    "lead",
+    "manager",
+    "5 years",
+    "7 years",
+    "registration fee",
+    "training fee",
+    "pay to apply"
+  ],
+  "platforms": ["linkedin", "indeed", "internshala", "instagram", "web"],
+  "min_match_score": 65,
+  "application_limit": 10,
+  "salary_expectation": "Paid internship preferred; target ₹5,000+/month",
+  "remote_preference": "remote"
+}
+
